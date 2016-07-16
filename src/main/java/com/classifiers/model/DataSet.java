@@ -5,48 +5,37 @@ import java.util.Set;
 
 public class DataSet {
 	
-	private Set<DataItem> traingSet;
-	
-	private Set<DataItem> testSet;
+	private Set<DataItem> trainingSet;
 	
 	public DataSet(){
 		
-		traingSet = new HashSet<DataItem>();
-		testSet = new HashSet<DataItem>();
+		trainingSet = new HashSet<DataItem>();
 		
 	}
 	
-	public DataSet(Set<DataItem> traingSet, Set<DataItem> testSet) {
+	public DataSet(Set<DataItem> trainingSet) {
 		
-		setTraingSet(traingSet);
-		
-		setTestSet(testSet);
+		this.trainingSet = trainingSet;
 		
 	}
 
-	public Set<DataItem> getTraingSet() {
-		return traingSet;
+	public Set<DataItem> getTrainingSet() {
+		return trainingSet;
 	}
 
-	public void setTraingSet(Set<DataItem> traingSet) {
-		this.traingSet = traingSet;
+	public void setTrainingSet(Set<DataItem> trainingSet) {
+		this.trainingSet = trainingSet;
 	}
 
-	public Set<DataItem> getTestSet() {
-		return testSet;
+	/**
+	 * Add dataItem to the set
+	 * 
+	 * @param DataItem 
+	 * @return void
+	 * */
+	public void addTrainingSet(DataItem dataItem){
+		
+		getTrainingSet().add(dataItem);
 	}
-
-	public void setTestSet(Set<DataItem> testSet) {
-		this.testSet = testSet;
-	}
-	
-	public void addToTrainingSet(DataItem dataItem){
-		getTraingSet().add(dataItem);	
-	}
-	
-	public void addToTestSet(DataItem dataItem){
-		getTestSet().add(dataItem);		
-	}
-	
 	
 }

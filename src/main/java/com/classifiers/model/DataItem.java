@@ -1,6 +1,8 @@
 package com.classifiers.model;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * 
@@ -8,21 +10,19 @@ import java.io.Serializable;
  * */
 public class DataItem implements Serializable {
 	
-	private Float[] features;
+	private Float[] features = {};
 	
 	private String className;
 	
-	private Float distance;
+	private Double distance;
 	
 	public DataItem() {
-
 	}
 	
 	public DataItem(Float[] features, String className){
 		
-		setFeatures(features);
-		
-		setClassName(className);
+		this.features = features;
+		this.className = className;
 		
 	}
 
@@ -41,14 +41,30 @@ public class DataItem implements Serializable {
 	public void setClassName(String className) {
 		this.className = className;
 	}
-
-	public float getDistance() {
+	
+	
+	public Double getDistance() {
 		return distance;
 	}
 
-	public void setDistance(float distance) {
+	public void setDistance(Double distance) {
 		this.distance = distance;
 	}
 
+	/**
+	 * Add features to the array
+	 * 
+	 * */
+	public void addFeatures(Float dataPoint){
+
+		final int N = getFeatures().length;
+		
+		Float[] arr = Arrays.copyOf(getFeatures(), N+1);
+		
+		arr[N] = dataPoint;
+		
+		setFeatures(arr);
+		
+	}
 	
 }

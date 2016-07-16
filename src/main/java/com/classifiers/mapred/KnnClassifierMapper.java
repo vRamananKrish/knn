@@ -78,6 +78,7 @@ public class KnnClassifierMapper extends Mapper<LongWritable, Text, Text, IntWri
 		IntWritable val = new IntWritable(classMap.get(className));
 		
 		System.out.println(className+"-"+val.toString());
+		
 		context.write(prediction, val);		
 		
 	}

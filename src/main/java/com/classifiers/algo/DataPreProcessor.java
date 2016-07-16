@@ -15,7 +15,7 @@ import com.classifiers.model.DataSet;
 
 public class DataPreProcessor {
 	
-	private float splitPercentage = 0.66f;
+	private float splitPercentage = 0.80f;
 	
 	public DataPreProcessor() {	
 		
@@ -25,7 +25,7 @@ public class DataPreProcessor {
 		
 		DataPreProcessor proc = new DataPreProcessor();
 		
-		DataSet dataSet = proc.extractDataSet("E:\\Space\\titan\\hdpSpace\\kNN\\src\\main\\resources\\data/iris.csv", 0.70f);
+		DataSet dataSet = proc.extractDataSet("E:\\Space\\titan\\hdpSpace\\kNN\\src\\main\\resources\\data/iris.csv");
 		
 		System.out.println("Data set:"+ dataSet);
 		
@@ -35,7 +35,7 @@ public class DataPreProcessor {
 	 * Read the given file and split into lines
 	 * 
 	 * */
-	public DataSet extractDataSet(String fileName, float splitPercentage){
+	public DataSet extractDataSet(String fileName){
 		
 		DataSet dataSet = new DataSet();
 		
@@ -62,13 +62,18 @@ public class DataPreProcessor {
 				dataItem.setFeatures(features);
 				dataItem.setClassName(csvRecord.get(4));		
 				
-				if(Math.random() < splitPercentage){
+				//
+				// Commented the code for MR implementation
+				//
+				dataSet.addTrainingSet(dataItem);
+				
+				/*if(Math.random() < splitPercentage){
 					
 					dataSet.addToTrainingSet(dataItem);
 				}
 				else{
 					dataSet.addToTestSet(dataItem);
-				}
+				}*/
 				
 			}
 		}

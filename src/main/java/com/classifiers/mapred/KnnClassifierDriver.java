@@ -25,7 +25,6 @@ public class KnnClassifierDriver  {
 		
 		Job job = Job.getInstance(conf);
 		job.setJobName("KnnClassifier");
-		
 		job.setJarByClass(KnnClassifierDriver.class);
 		
 		job.setMapOutputKeyClass(Text.class);
